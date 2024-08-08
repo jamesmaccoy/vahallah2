@@ -23,10 +23,10 @@ export default async function Atom({name, description}){
     const atoms = await getAtoms();
     console.log({atoms});
     return(
-        <>
+        <div style={{border:'1px solid white', margin: '20px', padding: '20px'}} >
         <h1>{name}</h1>
         <p>{description}</p>
-        </>
+        </div>
     )
 }
 
