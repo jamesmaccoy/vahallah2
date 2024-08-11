@@ -10,7 +10,7 @@ export default async function Atoms(){
         {
             atoms.length > 0 && 
         atoms.map(({id, name, description})=>(
-            <Atom key={id} title={name} description={description} />
+            <Atom key={id} id={id} name={name} description={description} />
         ))
         }
         
