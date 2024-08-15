@@ -1,15 +1,7 @@
 //'use client'
 import {
   collection,
-  addDoc,
-  getDoc,
-  getDocs,
-  querySnapshot,
-  query,
-  onSnapshot,
-  deleteDoc,
-  doc,
-  documentId,
+  getDocs
 } from 'firebase/firestore';
 import { db } from '@/firebase'
 
@@ -21,20 +13,19 @@ export async function getAtoms() {
   }
   
 
-export default async function Atom({name, description, snippet, body, noButton = false}){
+export default async function Atom({name, id, description, snippet, body, noButton = false}){
     const atoms = await getAtoms();
-    console.log({atoms});
+    //console.log({atoms});
     return(
       <div style={{border:'1px solid white', margin: '20px', padding: '20px'}} >
       <h2 className={`mb-3 text-2xl font-semibold`}>{name}</h2>
        <p>{description}</p>
        <p>{snippet}</p>
-       <p>{body}</p>
+       <p>{id}</p>
        {
-         !noButton && <AtomicButton id={atoms.id}  />
+         !noButton && <AtomicButton id={id} />
        }
        
        </div>
     )
 }
-
