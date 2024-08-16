@@ -5,8 +5,10 @@ import { db } from '@/firebase';
 
 export async function generateStaticParams(){
     const atoms = await getDocs(collection(db, 'anatomy'));
-    return atoms.docs.map((doc) => ({ id: [doc.id], ...doc.data() })); // Ensure id is an array
+    return atoms.docs.map((doc) => ({ slug: [doc.id], ...doc.data() }));
+
 }
+
 
 async function getAtoms(ids){
     const promises = []
@@ -14,10 +16,8 @@ async function getAtoms(ids){
         promises.push(getDoc(doc(db, 'anatomy', id))) 
     }
     const atoms = await Promise.all(promises);
-    return atoms.map((atom) => ({ id: ids, ...atom.data() }));
-
+    return atoms.map((atom, index) => ({ id: ids[index], ...atom.data() }));
 }
-    
 
 export default async function AtomPage({params}){
     const ids = Array.isArray(params.slug) ? params.slug : [params.slug]; 
@@ -31,5 +31,4 @@ export default async function AtomPage({params}){
                     <Details noButton name={name}  description={description}  key={id} />
                 ))
             )
-    
 }

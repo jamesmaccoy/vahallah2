@@ -21,7 +21,7 @@ export default async function Atom({name, id, description, snippet, body, noButt
       <h2 className={`mb-3 text-2xl font-semibold`}>{name}</h2>
        <p>{description}</p>
        <p>{snippet}</p>
-       <p>{id}</p>
+       <p>{body}</p>
        {
          !noButton && <AtomicButton id={id} />
        }
