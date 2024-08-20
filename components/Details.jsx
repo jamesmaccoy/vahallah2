@@ -16,7 +16,7 @@ import AtomicButton from './AtomicButton';
 
 
 
-export default function Details({id, name, description, noButton = false}) {
+export default function Details({id, name, description, body, snippet, noButton = false}) {
 
     const [products, setProducts] = useState([]);
       const [newProduct, setNewProduct] = useState({ name: '', description: '' });
@@ -73,8 +73,8 @@ export default function Details({id, name, description, noButton = false}) {
              <span className="capitalize font-sans w-ful ">{description}</span>
       
             
-             <span className="font-sans">{name}</span>
-             <span>{name}</span>
+             <span className="font-sans">{body}</span>
+             <span>{snippet}</span>
      
             {
              !noButton &&

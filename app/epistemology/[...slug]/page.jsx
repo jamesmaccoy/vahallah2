@@ -23,12 +23,12 @@ export default async function AtomPage({params}){
     const ids = Array.isArray(params.slug) ? params.slug : [params.slug]; 
     const atoms = await getAtoms(ids);
     const atom = atoms[0];
-    const { name, description } = atom;
+    const { name, description,snippet } = atom;
     console.log({params});
    
     return atoms.length > 0 && (
         atoms.map(({id, name, description}) => (
-                    <Details noButton name={name}  description={description}  key={id} />
+                    <Details noButton name={name}  description={description} snippet={snippet} key={id} />
                 ))
             )
 }
